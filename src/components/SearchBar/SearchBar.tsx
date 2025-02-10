@@ -1,16 +1,24 @@
 import toast, { Toaster } from "react-hot-toast";
 import s from "./SearchBar.module.css";
+import { FormEvent } from "react";
+import { SearchBarProps } from "../../types";
 
-function SearchBar({ onSearch }) {
-  const handleSubmit = (e) => {
+function SearchBar({ onSearch }: SearchBarProps) {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target;
-    const query = e.target.elements.topic.value;
-    onSearch(query);
+    const form = e.currentTarget;
+    const queryInput = e.currentTarget.elements.namedItem(
+      "topic"
+    ) as HTMLInputElement;
+
+    const query = queryInput.value.trim();
+
     form.reset();
-    if (query.trim() === "") {
+    if (query === "") {
       toast("Please try to search for images!");
+      return;
     }
+    onSearch(query);
   };
 
   return (
