@@ -1,17 +1,18 @@
-import { ThreeDots } from "react-loader-spinner";
-import s from "./Loader.module.css";
+import { CircularProgress } from "@mui/material";
+import { Box } from "@mui/material";
 
 function Loader() {
   return (
-    <ThreeDots
-      visible={true}
-      height="80"
-      width="80"
-      color="#1d8dd7"
-      radius="9"
-      ariaLabel="three-dots-loading"
-      wrapperClass={s.loader}
-    />
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        height: "100vh",
+        alignItems: "center",
+      }}
+    >
+      <CircularProgress />
+    </Box>
   );
 }
 
