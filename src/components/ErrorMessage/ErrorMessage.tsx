@@ -1,4 +1,4 @@
-function ErrorMessage() {
+function ErrorMessage(): React.ReactElement {
   return (
     <div>
       <h3
